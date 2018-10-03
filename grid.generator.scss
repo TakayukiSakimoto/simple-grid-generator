@@ -85,6 +85,7 @@ html { box-sizing: border-box; }
 // generate grid classes for each breakpoint, defaults defined below
 @mixin gridGenerator(
          $gridColumns: 12,                    // number of grid columns 
+         $gridClassPrefix: 'o-',                    // number of grid columns 
          $breakpoints: (0, 480px, 800px),     // array of breakpoints
          $breakpointPrefixes: (s-,m-,l-),     // array of breakpoint prefixes
          $breakpointType: 'px',               // breakpoint type px or em 
@@ -92,7 +93,7 @@ html { box-sizing: border-box; }
        ) {
 
   //* generate top-level grid classes, no prefix */
-  @include gridClasses('', $gridColumns, $spaceUnits);
+  @include gridClasses($gridClassPrefix, $gridColumns, $spaceUnits);
 
   @for $i from 1 through length($breakpointPrefixes) {
     $prefix: nth($breakpointPrefixes, $i);
